@@ -12,6 +12,11 @@ import "babel-register"
 import VueLocale from "./src/VueLocale"
 
 
-test("Message ", (t) => {
+test("VueLocale Plugin is valid", t => {
+  t.same(typeof VueLocale, "Object")
+  t.same(typeof VueLocale.install, "Function")
+});
 
-})
+test("Simple Message", t => {
+  t.same([1, 2], [1, 2]);
+});
