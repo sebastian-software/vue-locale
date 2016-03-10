@@ -38,7 +38,7 @@ Alternatively you can also use plain old NPM:
 npm install vue-locale --save
 ```
 
-## Usage
+## Integration
 
 Inside your VueJS application you have to register the `VueLocale` plugin:
 
@@ -56,6 +56,42 @@ While these are typical examples of values:
 - `SELECTED_LANGUAGE`: `"de"`, `"en"`, `"fr"`, ... (any valid language identifier)
 - `SELECTED_CURRENCY`: `"EUR"`, `"USD"`, ... (any valid currency from [CLDR data](http://www.currency-iso.org/dam/downloads/lists/list_one.xml))
 - `MESSAGE_TEXTS`: `{ "de" : { key : value, ...}, ... }`
+
+
+## Usage
+
+### Adding Messages
+
+let messages = {
+  "de": {
+    "my-message-identifier": "Hallo Welt!",
+    "my-html-identifier": "Hallo <b>Welt</b>!",
+    "my-personal-identifier": "Hallo {name}!"
+
+  },
+
+  "en": {
+    "my-message-identifier": "Hello World!",
+    "my-html-identifier": "Hello <b>World</b>!",
+    "my-personal-identifier": "Hello {name}!"
+
+  }
+};
+https://shop.avira.com/30/cp/88589441-RYtBE1rirLpidu2c0DxI?
+
+### Translating messages using VueJS filter
+
+- Plain Text: ```{{ "my-message-identifier" | format-message }}```
+- HTML Output: ```{{{ "my-html-identifier" | format-message }}}```
+- Personal: Not possible because we can't pass the required additional data structure to the filter
+
+### Translating using function calls
+
+- Plain Text: ```{{ "my-message-identifier" | format-message }}```
+- HTML Output: ```{{{ "my-html-identifier" | format-message }}}```
+- Personal: `{{{ $formatMessage("my-personal-identifier", { name : screenName }) }}}`
+
+
 
 ## Copyright
 
