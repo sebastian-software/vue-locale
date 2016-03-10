@@ -12,24 +12,24 @@ import "babel-register"
 import VueLocale from "./src/VueLocale"
 
 // Exports the later used global IntlPolyfill
-import "intl";
+import "intl"
 
-import locale_en from "intl/locale-data/json/en.json";
-IntlPolyfill.__addLocaleData(locale_en);
+import locale_en from "intl/locale-data/json/en.json"
+IntlPolyfill.__addLocaleData(locale_en)
 
-import locale_de from "intl/locale-data/json/de.json";
-IntlPolyfill.__addLocaleData(locale_de);
+import locale_de from "intl/locale-data/json/de.json"
+IntlPolyfill.__addLocaleData(locale_de)
 
-import locale_fr from "intl/locale-data/json/fr.json";
-IntlPolyfill.__addLocaleData(locale_fr);
+import locale_fr from "intl/locale-data/json/fr.json"
+IntlPolyfill.__addLocaleData(locale_fr)
 
 
 
 test("VueLocale Plugin is valid", t => {
   t.same(typeof VueLocale, "object")
   t.same(typeof VueLocale.install, "function")
-});
+})
 
 test("Simple Message", t => {
-  t.same([1, 2], [1, 2]);
-});
+  t.same([ 1, 2 ], [ 1, 2 ])
+})
