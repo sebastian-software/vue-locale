@@ -6,7 +6,7 @@
 */
 
 /* eslint no-unused-vars:0 */
-import IntlPolyfillImport from "components/Localization/IntlPolyfill";
+import "IntlPolyfill";
 
 import IntlMessageFormat from "intl-messageformat";
 import IntlRelativeFormat from "intl-relativeformat";
