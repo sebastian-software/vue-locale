@@ -35,8 +35,10 @@
     "updtr": "^0.1.7"
   },
   "scripts": {
+    "build": "babel --source-maps true --out-dir ./lib/ ./src/",
+    "pretest": "npm run build",
     "test": "ava && eslint *.js src/*.js",
-    "prepublish": "babel --source-maps true --out-dir ./lib/ ./src/",
+    "prepublish": "npm run build",
     "release": "release-it --github.release --npm.publish",
     "depupdate": "updtr"
   },
