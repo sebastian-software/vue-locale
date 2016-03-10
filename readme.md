@@ -62,7 +62,7 @@ While these are typical examples of values:
 
 ### Adding Messages
 
-```
+```js
 let messages = {
   "de": {
     "my-message-identifier": "Hallo Welt!",
