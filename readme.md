@@ -44,7 +44,9 @@ Inside your VueJS application you have to register the `VueLocale` plugin:
 
 ```js
 import VueLocale from "vue-locale";
-Vue.use(VueLocale, {
+
+Vue.use(VueLocale,
+{
   language: SELECTED_LANGUAGE,
   currency: SELECTED_CURRENCY,
   messages: MESSAGE_TEXTS
