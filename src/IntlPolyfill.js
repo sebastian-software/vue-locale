@@ -1,15 +1,9 @@
 // Unfortunatly this here means some overhead here:
 // "ES6 imports are declarative and meant for static analysis. They cannot be dynamic."
-import intl from "intl";
+
 import IntlRelativeFormat from 'intl-relativeformat';
 
-import locale_en from "intl/locale-data/json/en.json!json";
-import locale_de from "intl/locale-data/json/de.json!json";
-import locale_fr from "intl/locale-data/json/fr.json!json";
 
-IntlPolyfill.__addLocaleData(locale_en);
-IntlPolyfill.__addLocaleData(locale_de);
-IntlPolyfill.__addLocaleData(locale_fr);
 
 /* TODO */
 /*
