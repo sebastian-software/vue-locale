@@ -11,6 +11,8 @@ IntlPolyfill.__addLocaleData(locale_en);
 IntlPolyfill.__addLocaleData(locale_de);
 IntlPolyfill.__addLocaleData(locale_fr);
 
+/* TODO */
+/*
 // Also in: intl-relativeformat/dist/locale-data/de, but there it's wrapped in a global JSONP-like method call which does not work with JSPM
 const data_de = {
   "locale": "de",
@@ -37,3 +39,4 @@ const data_fr = {
 };
 
 IntlRelativeFormat.__addLocaleData(data_fr);
+*/
