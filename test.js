@@ -13,8 +13,8 @@ import VueLocale from "./src/VueLocale"
 
 
 test("VueLocale Plugin is valid", t => {
-  t.same(typeof VueLocale, "Object")
-  t.same(typeof VueLocale.install, "Function")
+  t.same(typeof VueLocale, "object")
+  t.same(typeof VueLocale.install, "function")
 });
 
 test("Simple Message", t => {
