@@ -1,8 +1,8 @@
 /*
-Copyright (c) 2014, Yahoo! Inc. All rights reserved.
-Copyright (c) 2016, Sebastian Software GmbH
-Copyrights licensed under the New BSD License.
-See the accompanying LICENSE file for terms.
+===========================================================================
+    Copyright 2015-2016 Sebastian Software GmbH, Germany
+    Licensed under Apache-2.0
+===========================================================================
 */
 
 /* eslint no-unused-vars:0 */
