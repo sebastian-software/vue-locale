@@ -1,7 +1,6 @@
 // Unfortunatly this here means some overhead here:
 // "ES6 imports are declarative and meant for static analysis. They cannot be dynamic."
 
-import IntlRelativeFormat from 'intl-relativeformat'
 
 
 

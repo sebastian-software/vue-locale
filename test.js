@@ -14,6 +14,7 @@ import VueLocale from "./src/VueLocale"
 // Exports the later used global IntlPolyfill
 import "intl"
 
+// Import three common locales for testing
 import locale_en from "intl/locale-data/json/en.json"
 IntlPolyfill.__addLocaleData(locale_en)
 
@@ -24,6 +25,15 @@ import locale_fr from "intl/locale-data/json/fr.json"
 IntlPolyfill.__addLocaleData(locale_fr)
 
 
+// The formatting for relative dates uses custom data
+import IntlRelativeFormat from "intl-relativeformat"
+
+
+/*
+import locale_en_2 from "intl-relativeformat/dist/locale-data/en.js"
+import locale_de_2 from "intl-relativeformat/dist/locale-data/de.js"
+import locale_fr_2 from "intl-relativeformat/dist/locale-data/fr.js"
+*/
 
 test("VueLocale Plugin is valid", t => {
   t.same(typeof VueLocale, "object")
