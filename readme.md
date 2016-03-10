@@ -63,14 +63,17 @@ While these are typical examples of values:
 ### Adding Messages
 
 ```js
-let messages = {
-  "de": {
+let messages =
+{
+  "de":
+  {
     "my-message-identifier": "Hallo Welt!",
     "my-html-identifier": "Hallo <b>Welt</b>!",
     "my-personal-identifier": "Hallo {name}!"
   },
 
-  "en": {
+  "en":
+  {
     "my-message-identifier": "Hello World!",
     "my-html-identifier": "Hello <b>World</b>!",
     "my-personal-identifier": "Hello {name}!"
