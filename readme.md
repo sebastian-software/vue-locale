@@ -40,8 +40,22 @@ npm install vue-locale --save
 
 ## Usage
 
-TODO
+Inside your VueJS application you have to register the `VueLocale` plugin:
 
+```js
+import VueLocale from "vue-locale";
+Vue.use(VueLocale, {
+  language: SELECTED_LANGUAGE,
+  currency: SELECTED_CURRENCY,
+  messages: MESSAGE_TEXTS
+})
+```
+
+While these are typical examples of values:
+
+- `SELECTED_LANGUAGE`: `"de"`, `"en"`, `"fr"`, ... (any valid language identifier)
+- `SELECTED_CURRENCY`: `"EUR"`, `"USD"`, ... (any valid currency from [CLDR data](http://www.currency-iso.org/dam/downloads/lists/list_one.xml))
+- `MESSAGE_TEXTS`: `{ "de" : { key : value, ...}, ... }`
 
 ## Copyright
 
