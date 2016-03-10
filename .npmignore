@@ -1,0 +1,12 @@
+.gitignore
+.travis.yml
+.eslintrc.yml
+.babelrc
+.editorconfig
+.codeclimate.yml
+
+node_modules/
+npm-debug.log
+
+test.js
+src
