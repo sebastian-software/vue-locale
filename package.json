@@ -33,6 +33,7 @@
     "eslint": "^2.3.0",
     "formatjs-extract-cldr-data": "^2.0.0",
     "gulp": "^3.9.1",
+    "jsonfile": "^2.2.3",
     "s15e-javascript": "^0.1.4",
     "updtr": "^0.1.7"
   },
