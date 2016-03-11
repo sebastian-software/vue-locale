@@ -8,16 +8,16 @@ import { map } from "lodash"
 
 gulp.task("clean-data", function()
 {
-  return del(["data/*"]);
+  return del([ "data/*" ])
 })
 
 gulp.task("build-data", function()
 {
   let data = extractData(
-  {
-    pluralRules: true,
-    relativeFields: true
-  })
+    {
+      pluralRules: true,
+      relativeFields: true
+    })
 
   jsonfile.spaces = 0
 
