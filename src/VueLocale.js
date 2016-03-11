@@ -5,9 +5,6 @@
 ===========================================================================
 */
 
-/* eslint no-unused-vars:0 */
-import "./IntlPolyfill"
-
 import IntlMessageFormat from "intl-messageformat"
 import IntlRelativeFormat from "intl-relativeformat"
 
