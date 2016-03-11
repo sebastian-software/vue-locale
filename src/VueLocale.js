@@ -76,9 +76,8 @@ function install(Vue, options)
 
   function parseToNumber(value)
   {
-    if (value == null || value === "") {
+    if (value == null || value === "")
       return 0
-    }
 
     var splits = value.split(decimalSeparator).map(extractNumberParts)
 
@@ -93,9 +92,8 @@ function install(Vue, options)
   function formatRelative(date, format, now)
   {
     let parsedDate = new Date(date)
-    if (!isDate(parsedDate)) {
+    if (!isDate(parsedDate))
       throw new TypeError("A date or timestamp must be provided to {{formatRelative}}")
-    }
 
     return getCachedRelativeFormat(locale, format).format(parsedDate, {
       now: now || new Date()
@@ -134,9 +132,8 @@ function install(Vue, options)
   Vue.directive("i18n", function(id)
   {
     /* eslint no-invalid-this: 0 */
-    if (id == null || isNaN(id)) {
+    if (id == null || isNaN(id))
       id = this.expression
-    }
 
     this.el.innerHTML = formatMessage(id)
   })
@@ -145,8 +142,15 @@ function install(Vue, options)
   Vue.filter("format-currency",
   {
     // model -> view: formats the value when updating the input element.
-    read: function(val) {
-      var numberOptions = { style: "currency", minimumFractionDigits: 0, maximumFractionDigits: 0 }
+    read: function(val)
+    {
+      var numberOptions =
+      {
+        style: "currency",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      }
+
       return formatNumber(val == null || val === "" ? 0 : val, numberOptions)
     },
 
@@ -172,9 +176,11 @@ function install(Vue, options)
   Vue.filter("format-percent",
   {
     // model -> view: formats the value when updating the input element.
-    read: function(val, fractionDigits) {
+    read: function(val, fractionDigits)
+    {
       return formatNumber(val == null || val === "" ? 0 : clamp(val / 100, 0, 1), {
-        style: "percent", minimumFractionDigits: fractionDigits == null ? 0 : fractionDigits
+        style: "percent",
+        minimumFractionDigits: fractionDigits == null ? 0 : fractionDigits
       })
     },
 
@@ -187,8 +193,10 @@ function install(Vue, options)
   Vue.filter("format-number",
   {
     // model -> view: formats the value when updating the input element.
-    read: function(val, fractionDigits) {
-      return val == null || val === "" ? 0 : formatNumber(val, {
+    read: function(val, fractionDigits)
+    {
+      return val == null || val === "" ? 0 : formatNumber(val,
+      {
         minimumFractionDigits: fractionDigits == null ? 0 : fractionDigits,
         maximumFractionDigits: fractionDigits == null ? Infinity : fractionDigits
       })
