@@ -1,5 +1,3 @@
-"use strict"
-
 import gulp from "gulp"
 import del from "del"
 import extractData from "formatjs-extract-cldr-data"
@@ -23,7 +21,7 @@ gulp.task("build-data", function()
 
   return Promise.all(map(data, (value, locale) =>
   {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       jsonfile.writeFile("data/" + locale + ".json", value, resolve)
     })
   }))

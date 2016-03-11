@@ -14,6 +14,8 @@ import VueLocale from "./src/VueLocale"
 // Exports the later used global IntlPolyfill
 import "intl"
 
+/* eslint camelcase: 0 */
+/* global IntlPolyfill */
 // Import three common locales for testing
 import intl_en from "intl/locale-data/json/en.json"
 import intl_de from "intl/locale-data/json/de.json"
@@ -41,7 +43,9 @@ IntlRelativeFormat.__addLocaleData(relative_es)
 
 
 function getFakeVue() {
-  var fakeVue = function() {}
+  function fakeVue() {
+    // nothing to do
+  }
 
   fakeVue.filters = {}
   fakeVue.directives = {}
@@ -57,12 +61,24 @@ function getFakeVue() {
   return fakeVue
 }
 
-test("VueLocale Plugin is valid", t => {
-  t.same(typeof VueLocale, "object")
-  t.same(typeof VueLocale.install, "function")
+test("VueLocale Plugin is valid", (api) => {
+  api.same(typeof VueLocale, "object")
+  api.same(typeof VueLocale.install, "function")
 })
 
-test("Installation works", t => {
+test("Installation works", (api) => {
+  var fakeVue = getFakeVue()
+
+  api.notThrows(() => {
+    VueLocale.install(fakeVue, {
+      language: "de-DE",
+      currency: "EUR",
+      messages: {}
+    })
+  })
+})
+
+test("Check Prototype Methods Exists", (api) => {
   var fakeVue = getFakeVue()
 
   VueLocale.install(fakeVue, {
@@ -70,20 +86,10 @@ test("Installation works", t => {
     currency: "EUR",
     messages: {}
   })
-})
 
-test("Check Prototype Methods Exists", t => {
-  var fakeVue = getFakeVue()
-
-  VueLocale.install(fakeVue, {
-    language: "de-DE",
-    currency: "EUR",
-    messages: {}
-  })
-
-  t.same(typeof fakeVue.prototype.$formatMessage, "function")
-  t.same(typeof fakeVue.prototype.$formatDate, "function")
-  t.same(typeof fakeVue.prototype.$formatTime, "function")
-  t.same(typeof fakeVue.prototype.$formatNumber, "function")
-  t.same(typeof fakeVue.prototype.$formatRelative, "function")
+  api.same(typeof fakeVue.prototype.$formatMessage, "function")
+  api.same(typeof fakeVue.prototype.$formatDate, "function")
+  api.same(typeof fakeVue.prototype.$formatTime, "function")
+  api.same(typeof fakeVue.prototype.$formatNumber, "function")
+  api.same(typeof fakeVue.prototype.$formatRelative, "function")
 })

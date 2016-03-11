@@ -21,13 +21,12 @@ const getCachedRelativeFormat = createFormatCache(IntlRelativeFormat)
 
 
 function install(Vue, options) {
-
   var { language, currency, messages } = options
   var locale = language
 
   function formatDate(date, format) {
-    date = new Date(date)
-    if (!isDate(date)) {
+    let parsedDate = new Date(date)
+    if (!isDate(parsedDate)) {
       throw new TypeError("A date or timestamp must be provided to {{formatDate}}")
     }
 
@@ -35,11 +34,11 @@ function install(Vue, options) {
       format = formats.date[format]
     }
 
-    return getCachedDateTimeFormat(locale, format).format(date)
+    return getCachedDateTimeFormat(locale, format).format(parsedDate)
   }
 
   function formatTime(date, format) {
-    date = new Date(date)
+    let parsedDate = new Date(date)
     if (!isDate(date)) {
       throw new TypeError("A date or timestamp must be provided to {{formatTime}}")
     }
@@ -48,7 +47,7 @@ function install(Vue, options) {
       format = formats.time[format]
     }
 
-    return getCachedDateTimeFormat(locale, format).format(date)
+    return getCachedDateTimeFormat(locale, format).format(parsedDate)
   }
 
   function formatNumber(num, format) {
@@ -69,9 +68,11 @@ function install(Vue, options) {
   }
 
   // Figuring out whether the separator is either "," or "." (Are there any other possibilities at all?)
-  var decimalSeparator = formatNumber(3.1).charAt(1)
+  var decimalTestNumber = 3.1
+  var decimalSeparator = formatNumber(decimalTestNumber).charAt(1)
 
-  function extractNumberParts(value) {
+  function extractNumberParts(value)
+  {
     var parsed = parseInt(value.replace(/[^0-9]/g, ""), 0)
     return isNaN(parsed) ? 0 : parsed
   }
@@ -93,12 +94,12 @@ function install(Vue, options) {
   }
 
   function formatRelative(date, format, now) {
-    date = new Date(date)
-    if (!isDate(date)) {
+    let parsedDate = new Date(date)
+    if (!isDate(parsedDate)) {
       throw new TypeError("A date or timestamp must be provided to {{formatRelative}}")
     }
 
-    return getCachedRelativeFormat(locale, format).format(date, {
+    return getCachedRelativeFormat(locale, format).format(parsedDate, {
       now: now || new Date()
     })
   }
@@ -134,6 +135,7 @@ function install(Vue, options) {
   })
 
   Vue.directive("i18n", function(id) {
+    /* eslint no-invalid-this: 0 */
     if (id == null || isNaN(id)) {
       id = this.expression
     }
