@@ -40,7 +40,7 @@
   "scripts": {
     "lint": "eslint --cache *.js src/*.js",
     "autofix": "eslint --cache --fix *.js src/*.js",
-    "build": "babel --source-maps true --out-dir ./lib/ ./src/",
+    "build": "babel --source-maps true --out-dir ./lib/ ./src/ && gulp build-data",
     "pretest": "npm run build",
     "test": "ava && eslint *.js src/*.js",
     "prepublish": "npm run build",
