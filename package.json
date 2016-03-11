@@ -42,7 +42,7 @@
     "autofix": "eslint --cache --fix *.js src/*.js",
     "build": "babel --source-maps true --out-dir ./lib/ ./src/ && gulp build-data",
     "pretest": "npm run build",
-    "test": "ava && eslint *.js src/*.js",
+    "test": "ava",
     "prepublish": "npm run build",
     "release": "release-it --github.release --npm.publish",
     "depupdate": "updtr"
