@@ -40,11 +40,50 @@ IntlRelativeFormat.__addLocaleData(relative_fr)
 IntlRelativeFormat.__addLocaleData(relative_es)
 
 
+function getFakeVue() {
+  var fakeVue = function() {}
+
+  fakeVue.filters = {}
+  fakeVue.directives = {}
+
+  fakeVue.filter = function(name, callback) {
+    fakeVue.filters[name] = callback
+  }
+
+  fakeVue.directive = function(name, callback) {
+    fakeVue.directives[name] = callback
+  }
+
+  return fakeVue
+}
+
 test("VueLocale Plugin is valid", t => {
   t.same(typeof VueLocale, "object")
   t.same(typeof VueLocale.install, "function")
 })
 
-test("Simple Message", t => {
-  t.same([ 1, 2 ], [ 1, 2 ])
+test("Installation works", t => {
+  var fakeVue = getFakeVue()
+
+  VueLocale.install(fakeVue, {
+    language: "de-DE",
+    currency: "EUR",
+    messages: {}
+  })
+})
+
+test("Check Prototype Methods Exists", t => {
+  var fakeVue = getFakeVue()
+
+  VueLocale.install(fakeVue, {
+    language: "de-DE",
+    currency: "EUR",
+    messages: {}
+  })
+
+  t.same(typeof fakeVue.prototype.$formatMessage, "function")
+  t.same(typeof fakeVue.prototype.$formatDate, "function")
+  t.same(typeof fakeVue.prototype.$formatTime, "function")
+  t.same(typeof fakeVue.prototype.$formatNumber, "function")
+  t.same(typeof fakeVue.prototype.$formatRelative, "function")
 })
