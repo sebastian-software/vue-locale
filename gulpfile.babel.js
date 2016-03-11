@@ -12,16 +12,17 @@ gulp.task("clean-data", function()
 gulp.task("build-data", function()
 {
   let data = extractData(
-    {
-      pluralRules: true,
-      relativeFields: true
-    })
+  {
+    pluralRules: true,
+    relativeFields: true
+  })
 
   jsonfile.spaces = 0
 
   return Promise.all(map(data, (value, locale) =>
   {
-    return new Promise((resolve) => {
+    return new Promise((resolve) =>
+    {
       jsonfile.writeFile("data/" + locale + ".json", value, resolve)
     })
   }))
