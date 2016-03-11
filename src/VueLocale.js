@@ -20,49 +20,46 @@ const getCachedMessageFormat = createFormatCache(IntlMessageFormat)
 const getCachedRelativeFormat = createFormatCache(IntlRelativeFormat)
 
 
-function install(Vue, options) {
+function install(Vue, options)
+{
   var { language, currency, messages } = options
   var locale = language
 
-  function formatDate(date, format) {
+  function formatDate(date, format)
+  {
     let parsedDate = new Date(date)
-    if (!isDate(parsedDate)) {
+    if (!isDate(parsedDate))
       throw new TypeError("A date or timestamp must be provided to {{formatDate}}")
-    }
 
-    if (isString(format) && format in formats.date) {
+    if (isString(format) && format in formats.date)
       format = formats.date[format]
-    }
 
     return getCachedDateTimeFormat(locale, format).format(parsedDate)
   }
 
-  function formatTime(date, format) {
+  function formatTime(date, format)
+  {
     let parsedDate = new Date(date)
-    if (!isDate(date)) {
+    if (!isDate(date))
       throw new TypeError("A date or timestamp must be provided to {{formatTime}}")
-    }
 
-    if (isString(format) && format in formats.time) {
+    if (isString(format) && format in formats.time)
       format = formats.time[format]
-    }
 
     return getCachedDateTimeFormat(locale, format).format(parsedDate)
   }
 
-  function formatNumber(num, format) {
-    if (!isNumber(num)) {
+  function formatNumber(num, format)
+  {
+    if (!isNumber(num))
       throw new TypeError("A number must be provided to {{formatNumber}}")
-    }
 
-    if (isString(format) && format in formats.number) {
+    if (isString(format) && format in formats.number)
       format = formats.number[format]
-    }
 
     // Use globally defined currency when no other info is available
-    if (format && format.style === "currency" && !format.currency) {
+    if (format && format.style === "currency" && !format.currency)
       format.currency = currency
-    }
 
     return getCachedNumberFormat(locale, format).format(num)
   }
@@ -77,7 +74,8 @@ function install(Vue, options) {
     return isNaN(parsed) ? 0 : parsed
   }
 
-  function parseToNumber(value) {
+  function parseToNumber(value)
+  {
     if (value == null || value === "") {
       return 0
     }
@@ -85,15 +83,15 @@ function install(Vue, options) {
     var splits = value.split(decimalSeparator).map(extractNumberParts)
 
     // Build up float number to let parseFloat convert it back into a number
-    if (splits[1] > 0) {
+    if (splits[1] > 0)
       return parseFloat(splits[0] + "." + splits[1])
-    }
 
     // Return plain integer
     return splits[0]
   }
 
-  function formatRelative(date, format, now) {
+  function formatRelative(date, format, now)
+  {
     let parsedDate = new Date(date)
     if (!isDate(parsedDate)) {
       throw new TypeError("A date or timestamp must be provided to {{formatRelative}}")
@@ -104,20 +102,18 @@ function install(Vue, options) {
     })
   }
 
-  function formatMessage(message, ...formatOptions) {
+  function formatMessage(message, ...formatOptions)
+  {
     // Read real message from DB
-    if (message in messages) {
+    if (message in messages)
       message = messages[message]
-    }
 
-    if (typeof message === "string") {
+    if (typeof message === "string")
       message = getCachedMessageFormat(message, locale, {})
-    }
 
     // If there is a single map parameter, use that instead of the formatOptions array
-    if (formatOptions.length === 1 && isPlainObject(formatOptions[0])) {
+    if (formatOptions.length === 1 && isPlainObject(formatOptions[0]))
       formatOptions = formatOptions[0]
-    }
 
     return message.format(formatOptions)
   }
@@ -126,7 +122,8 @@ function install(Vue, options) {
 
   var helpers = { formatDate, formatTime, formatRelative, formatNumber, formatMessage }
 
-  each(helpers, function(helper, name) {
+  each(helpers, function(helper, name)
+  {
     // Adding features as a VueJS filter for easily pass a string over (only numberic parameters though)
     Vue.filter(kebabCase(name), helper)
 
@@ -134,7 +131,8 @@ function install(Vue, options) {
     Vue.prototype["$" + name] = helper
   })
 
-  Vue.directive("i18n", function(id) {
+  Vue.directive("i18n", function(id)
+  {
     /* eslint no-invalid-this: 0 */
     if (id == null || isNaN(id)) {
       id = this.expression
@@ -144,7 +142,8 @@ function install(Vue, options) {
   })
 
   // Via: http://jsfiddle.net/6jjuoypf/2/
-  Vue.filter("format-currency", {
+  Vue.filter("format-currency",
+  {
     // model -> view: formats the value when updating the input element.
     read: function(val) {
       var numberOptions = { style: "currency", minimumFractionDigits: 0, maximumFractionDigits: 0 }
@@ -157,7 +156,8 @@ function install(Vue, options) {
     }
   })
 
-  Vue.filter("format-currency-precise", {
+  Vue.filter("format-currency-precise",
+  {
     // model -> view: formats the value when updating the input element.
     read: function(val) {
       return formatNumber(val == null || val === "" ? 0 : val, "currency")
@@ -169,7 +169,8 @@ function install(Vue, options) {
     }
   })
 
-  Vue.filter("format-percent", {
+  Vue.filter("format-percent",
+  {
     // model -> view: formats the value when updating the input element.
     read: function(val, fractionDigits) {
       return formatNumber(val == null || val === "" ? 0 : clamp(val / 100, 0, 1), {
@@ -183,7 +184,8 @@ function install(Vue, options) {
     }
   })
 
-  Vue.filter("format-number", {
+  Vue.filter("format-number",
+  {
     // model -> view: formats the value when updating the input element.
     read: function(val, fractionDigits) {
       return val == null || val === "" ? 0 : formatNumber(val, {
