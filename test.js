@@ -15,25 +15,30 @@ import VueLocale from "./src/VueLocale"
 import "intl"
 
 // Import three common locales for testing
-import locale_en from "intl/locale-data/json/en.json"
-IntlPolyfill.__addLocaleData(locale_en)
+import intl_en from "intl/locale-data/json/en.json"
+import intl_de from "intl/locale-data/json/de.json"
+import intl_fr from "intl/locale-data/json/fr.json"
+import intl_es from "intl/locale-data/json/es.json"
 
-import locale_de from "intl/locale-data/json/de.json"
-IntlPolyfill.__addLocaleData(locale_de)
-
-import locale_fr from "intl/locale-data/json/fr.json"
-IntlPolyfill.__addLocaleData(locale_fr)
+IntlPolyfill.__addLocaleData(intl_en)
+IntlPolyfill.__addLocaleData(intl_de)
+IntlPolyfill.__addLocaleData(intl_fr)
+IntlPolyfill.__addLocaleData(intl_es)
 
 
 // The formatting for relative dates uses custom data
 import IntlRelativeFormat from "intl-relativeformat"
 
+import relative_en from "./data/en.json"
+import relative_de from "./data/de.json"
+import relative_fr from "./data/fr.json"
+import relative_es from "./data/es.json"
 
-/*
-import locale_en_2 from "intl-relativeformat/dist/locale-data/en.js"
-import locale_de_2 from "intl-relativeformat/dist/locale-data/de.js"
-import locale_fr_2 from "intl-relativeformat/dist/locale-data/fr.js"
-*/
+IntlRelativeFormat.__addLocaleData(relative_en)
+IntlRelativeFormat.__addLocaleData(relative_de)
+IntlRelativeFormat.__addLocaleData(relative_fr)
+IntlRelativeFormat.__addLocaleData(relative_es)
+
 
 test("VueLocale Plugin is valid", t => {
   t.same(typeof VueLocale, "object")
