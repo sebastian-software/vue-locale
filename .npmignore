@@ -5,6 +5,7 @@
 .editorconfig
 .codeclimate.yml
 
+gulpfile.babel.js
 node_modules/
 npm-debug.log
 
