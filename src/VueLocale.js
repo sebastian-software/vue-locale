@@ -160,6 +160,7 @@ function install(Vue, options)
       var numberOptions =
       {
         style: "currency",
+        currency: currency,
         minimumFractionDigits: 0,
         maximumFractionDigits: 0
       }
