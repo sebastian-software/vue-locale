@@ -170,3 +170,63 @@ test("Translation Plural", (api) => {
   api.same(vue.$formatMessage("photo-info", { num: 1 }), "You have one photo.")
   api.same(vue.$formatMessage("photo-info", { num: 2 }), "You have 2 photos.")
 })
+
+test("Format Number - EN", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "en",
+    currency: "EUR",
+    messages: {
+    }
+  })
+
+  var vue = new FakeVue()
+  api.same(vue.$formatNumber(3.14159), "3.142")
+  api.same(vue.$formatNumber(10000000), "10,000,000")
+})
+
+test("Format Number - ES", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "es",
+    currency: "EUR",
+    messages: {
+    }
+  })
+
+  var vue = new FakeVue()
+  api.same(vue.$formatNumber(3.14159), "3,142")
+  api.same(vue.$formatNumber(10000000), "10.000.000")
+})
+
+test("Format Number - FR", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "fr",
+    currency: "EUR",
+    messages: {
+    }
+  })
+
+  var vue = new FakeVue()
+  api.same(vue.$formatNumber(3.14159), "3,142")
+  api.same(vue.$formatNumber(10000000), "10 000 000")
+})
+
+test("Format Number - DE", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "de",
+    currency: "EUR",
+    messages: {
+    }
+  })
+
+  var vue = new FakeVue()
+  api.same(vue.$formatNumber(3.14159), "3,142")
+  api.same(vue.$formatNumber(10000000), "10.000.000")
+})
