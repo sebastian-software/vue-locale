@@ -7,10 +7,22 @@
 
 import IntlMessageFormat from "intl-messageformat"
 import IntlRelativeFormat from "intl-relativeformat"
+import IntlLocalesSupported from "intl-locales-supported"
 
 import createFormatCache from "intl-format-cache"
 
 import { kebabCase, isPlainObject, isString, isNumber, isDate, each, clamp } from "lodash"
+
+// Be sure to import the Polyfill
+// TODO: Figure out if there is a ES2015 way to conditional load this
+import "intl"
+
+// NodeJS by default to not offer full ICU support and therefor break the unit tests
+if (!IntlLocalesSupported(["de", "fr", "es"]))
+{
+  Intl.NumberFormat = IntlPolyfill.NumberFormat
+  Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat
+}
 
 const formats = IntlMessageFormat.formats
 
