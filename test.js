@@ -31,10 +31,10 @@ IntlPolyfill.__addLocaleData(intl_es)
 // The formatting for relative dates uses custom data
 import IntlRelativeFormat from "intl-relativeformat"
 
-import relative_en from "./data/en.json"
-import relative_de from "./data/de.json"
-import relative_fr from "./data/fr.json"
-import relative_es from "./data/es.json"
+import relative_en from "./data/en.js"
+import relative_de from "./data/de.js"
+import relative_fr from "./data/fr.js"
+import relative_es from "./data/es.js"
 
 IntlRelativeFormat.__addLocaleData(relative_en)
 IntlRelativeFormat.__addLocaleData(relative_de)
