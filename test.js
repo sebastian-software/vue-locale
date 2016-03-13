@@ -109,7 +109,7 @@ test("Instance works", (api) => {
   })
 })
 
-test("Translation Simple", (api) => {
+test("Translation Singular", (api) => {
   var FakeVue = getFakeVue()
 
   VueLocale.install(FakeVue, {
@@ -122,4 +122,51 @@ test("Translation Simple", (api) => {
 
   var vue = new FakeVue()
   api.same(vue.$formatMessage("hello"), "Hallo")
+})
+
+test("Translation Placeholder", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "de-DE",
+    currency: "EUR",
+    messages: {
+      "hello-name": "Hallo {name}!"
+    }
+  })
+
+  var vue = new FakeVue()
+  api.same(vue.$formatMessage("hello-name", { name : "Frank-Rüdiger" }), "Hallo Frank-Rüdiger!")
+})
+
+test("Translation Placeholder with Markup", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "de-DE",
+    currency: "EUR",
+    messages: {
+      "hello-name": "Hallo <strong>{name}</strong>!"
+    }
+  })
+
+  var vue = new FakeVue()
+  api.same(vue.$formatMessage("hello-name", { name : "Frank-Rüdiger" }), "Hallo <strong>Frank-Rüdiger</strong>!")
+})
+
+test("Translation Plural", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "de-DE",
+    currency: "EUR",
+    messages: {
+      "photo-info": "You have {num, plural, =0 {no photos.} =1 {one photo.} other {# photos.}}"
+    }
+  })
+
+  var vue = new FakeVue()
+  api.same(vue.$formatMessage("photo-info", { num: 0 }), "You have no photos.")
+  api.same(vue.$formatMessage("photo-info", { num: 1 }), "You have one photo.")
+  api.same(vue.$formatMessage("photo-info", { num: 2 }), "You have 2 photos.")
 })
