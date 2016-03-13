@@ -18,7 +18,7 @@ import { kebabCase, isPlainObject, isString, isNumber, isDate, each, clamp } fro
 import "intl"
 
 // NodeJS by default to not offer full ICU support and therefor break the unit tests
-if (!IntlLocalesSupported(["de", "fr", "es"]))
+if (!IntlLocalesSupported(["en", "de", "fr", "es"]))
 {
   Intl.NumberFormat = IntlPolyfill.NumberFormat
   Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat
