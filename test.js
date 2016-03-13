@@ -93,3 +93,19 @@ test("Check Prototype Methods Exists", (api) => {
   api.same(typeof FakeVue.prototype.$formatNumber, "function")
   api.same(typeof FakeVue.prototype.$formatRelative, "function")
 })
+
+test("Instance works", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "de-DE",
+    currency: "EUR",
+    messages: {}
+  })
+
+  api.notThrows(() => {
+    var vue = new FakeVue()
+    api.ok(vue instanceof FakeVue)
+  })
+})
+
