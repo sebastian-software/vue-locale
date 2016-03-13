@@ -1,7 +1,8 @@
 import gulp from "gulp"
 import del from "del"
+import fs from "fs"
 import extractData from "formatjs-extract-cldr-data"
-import jsonfile from "jsonfile"
+import stringify from "javascript-stringify"
 import { map } from "lodash"
 
 gulp.task("clean-data", function()
@@ -17,13 +18,14 @@ gulp.task("build-data", function()
     relativeFields: true
   })
 
-  jsonfile.spaces = 0
-
   return Promise.all(map(data, (value, locale) =>
   {
     return new Promise((resolve) =>
     {
-      jsonfile.writeFile("data/" + locale + ".json", value, resolve)
+      let stringified = stringify(value, null, "  ")
+      let result = `export default ${stringified}`
+
+      fs.writeFile("data/" + locale + ".js", result, resolve)
     })
   }))
 })
