@@ -57,29 +57,22 @@ While these are typical examples of values:
 
 - `SELECTED_LANGUAGE`: `"de"`, `"en"`, `"fr"`, ... (any valid language identifier)
 - `SELECTED_CURRENCY`: `"EUR"`, `"USD"`, ... (any valid currency from [CLDR data](http://www.currency-iso.org/dam/downloads/lists/list_one.xml))
-- `MESSAGE_TEXTS`: `{ "de" : { key : value, ...}, ... }`
+- `MESSAGE_TEXTS`: `{ key : value, ...}`
 
 
 ## Usage
 
 ### Adding Messages
 
+You should pass the matching locale data structure with relevant messages e.g. German.
+
 ```js
 let messages =
 {
-  "de":
-  {
-    "my-message-identifier": "Hallo Welt!",
-    "my-html-identifier": "Hallo <b>Welt</b>!",
-    "my-personal-identifier": "Hallo {name}!"
-  },
-
-  "en":
-  {
-    "my-message-identifier": "Hello World!",
-    "my-html-identifier": "Hello <b>World</b>!",
-    "my-personal-identifier": "Hello {name}!"
-  }
+  "my-message-identifier": "Hallo Welt!",
+  "my-html-identifier": "Hallo <b>Welt</b>!",
+  "my-personal-identifier": "Hallo {name}!",
+  ...
 }
 ```
 
