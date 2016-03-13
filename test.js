@@ -177,8 +177,7 @@ test("Format Number - EN", (api) => {
   VueLocale.install(FakeVue, {
     language: "en",
     currency: "EUR",
-    messages: {
-    }
+    messages: {}
   })
 
   var vue = new FakeVue()
@@ -192,8 +191,7 @@ test("Format Number - ES", (api) => {
   VueLocale.install(FakeVue, {
     language: "es",
     currency: "EUR",
-    messages: {
-    }
+    messages: {}
   })
 
   var vue = new FakeVue()
@@ -207,8 +205,7 @@ test("Format Number - FR", (api) => {
   VueLocale.install(FakeVue, {
     language: "fr",
     currency: "EUR",
-    messages: {
-    }
+    messages: {}
   })
 
   var vue = new FakeVue()
@@ -222,8 +219,7 @@ test("Format Number - DE", (api) => {
   VueLocale.install(FakeVue, {
     language: "de",
     currency: "EUR",
-    messages: {
-    }
+    messages: {}
   })
 
   var vue = new FakeVue()
