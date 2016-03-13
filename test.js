@@ -226,3 +226,63 @@ test("Format Number - DE", (api) => {
   api.same(vue.$formatNumber(3.14159), "3,142")
   api.same(vue.$formatNumber(10000000), "10.000.000")
 })
+
+
+
+
+
+test("Format Currency - EN", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "en",
+    currency: "USD",
+    messages: {}
+  })
+
+  var vue = new FakeVue()
+  api.same(vue.$formatNumber(7.98, "currency"), "$7.98")
+  api.same(vue.$formatNumber(1234.5, "currency"), "$1,234.50")
+})
+
+test("Format Currency - ES", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "es",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var vue = new FakeVue()
+  api.same(vue.$formatNumber(7.98, "currency"), "7,98 €")
+  api.same(vue.$formatNumber(1234.5, "currency"), "1.234,50 €")
+})
+
+test("Format Currency - FR", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "fr",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var vue = new FakeVue()
+  api.same(vue.$formatNumber(7.98, "currency"), "7,98 €")
+  api.same(vue.$formatNumber(1234.5, "currency"), "1 234,50 €")
+})
+
+test("Format Currency - DE", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "de",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var vue = new FakeVue()
+  api.same(vue.$formatNumber(7.98, "currency"), "7,98 €")
+  api.same(vue.$formatNumber(1234.5, "currency"), "1.234,50 €")
+})
