@@ -43,22 +43,22 @@ IntlRelativeFormat.__addLocaleData(relative_es)
 
 
 function getFakeVue() {
-  function fakeVue() {
+  function FakeVue() {
     // nothing to do
   }
 
-  fakeVue.filters = {}
-  fakeVue.directives = {}
+  FakeVue.filters = {}
+  FakeVue.directives = {}
 
-  fakeVue.filter = function(name, callback) {
-    fakeVue.filters[name] = callback
+  FakeVue.filter = function(name, callback) {
+    FakeVue.filters[name] = callback
   }
 
-  fakeVue.directive = function(name, callback) {
-    fakeVue.directives[name] = callback
+  FakeVue.directive = function(name, callback) {
+    FakeVue.directives[name] = callback
   }
 
-  return fakeVue
+  return FakeVue
 }
 
 test("VueLocale Plugin is valid", (api) => {
@@ -67,10 +67,10 @@ test("VueLocale Plugin is valid", (api) => {
 })
 
 test("Installation works", (api) => {
-  var fakeVue = getFakeVue()
+  var FakeVue = getFakeVue()
 
   api.notThrows(() => {
-    VueLocale.install(fakeVue, {
+    VueLocale.install(FakeVue, {
       language: "de-DE",
       currency: "EUR",
       messages: {}
@@ -79,17 +79,17 @@ test("Installation works", (api) => {
 })
 
 test("Check Prototype Methods Exists", (api) => {
-  var fakeVue = getFakeVue()
+  var FakeVue = getFakeVue()
 
-  VueLocale.install(fakeVue, {
+  VueLocale.install(FakeVue, {
     language: "de-DE",
     currency: "EUR",
     messages: {}
   })
 
-  api.same(typeof fakeVue.prototype.$formatMessage, "function")
-  api.same(typeof fakeVue.prototype.$formatDate, "function")
-  api.same(typeof fakeVue.prototype.$formatTime, "function")
-  api.same(typeof fakeVue.prototype.$formatNumber, "function")
-  api.same(typeof fakeVue.prototype.$formatRelative, "function")
+  api.same(typeof FakeVue.prototype.$formatMessage, "function")
+  api.same(typeof FakeVue.prototype.$formatDate, "function")
+  api.same(typeof FakeVue.prototype.$formatTime, "function")
+  api.same(typeof FakeVue.prototype.$formatNumber, "function")
+  api.same(typeof FakeVue.prototype.$formatRelative, "function")
 })
