@@ -66,12 +66,13 @@ function install(Vue, options)
     if (!isNumber(num))
       throw new TypeError("A number must be provided to {{formatNumber}}")
 
-    if (isString(format) && format in formats.number)
-      format = formats.number[format]
-
-    // Use globally defined currency when no other info is available
-    if (format && format.style === "currency" && !format.currency)
-      format.currency = currency
+    if (isString(format))
+    {
+      if (format === "currency")
+        format = { style : "currency", currency: currency }
+      else if (format in formats.number)
+        format = formats.number[format]
+    }
 
     return getCachedNumberFormat(locale, format).format(num)
   }
