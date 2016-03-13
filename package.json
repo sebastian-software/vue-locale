@@ -43,6 +43,7 @@
     "build": "babel --source-maps true --out-dir ./lib/ ./src/ && gulp build-data",
     "pretest": "npm run build",
     "test": "ava",
+    "test:watch": "ava --watch",
     "prepublish": "npm run build",
     "release": "release-it --github.release --npm.publish --non-interactive",
     "release-minor": "release-it --github.release --npm.publish --non-interactive --increment minor",
