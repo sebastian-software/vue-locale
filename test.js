@@ -109,3 +109,17 @@ test("Instance works", (api) => {
   })
 })
 
+test("Translation Simple", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "de-DE",
+    currency: "EUR",
+    messages: {
+      "hello": "Hallo"
+    }
+  })
+
+  var vue = new FakeVue()
+  api.same(vue.$formatMessage("hello"), "Hallo")
+})
