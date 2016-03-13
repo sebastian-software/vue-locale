@@ -23,7 +23,7 @@ gulp.task("build-data", function()
     return new Promise((resolve) =>
     {
       let stringified = stringify(value, null, "  ")
-      let result = `exports.default = ${stringified}`
+      let result = `"use strict";exports.default=${stringified};`
 
       fs.writeFile("data/" + locale + ".js", result, resolve)
     })
