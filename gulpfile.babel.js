@@ -25,7 +25,11 @@ gulp.task("build-data", function()
       let stringified = stringify(value, null, "  ")
       let result = `"use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.default=${stringified};`
 
-      fs.writeFile("data/" + locale + ".js", result, resolve)
+      fs.writeFile("data/" + locale + ".js", result, function(err)
+      {
+        if (err) throw err
+        resolve()
+      })
     })
   }))
 })
