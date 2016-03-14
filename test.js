@@ -417,3 +417,148 @@ test("Format Time Medium - DE", (api) => {
   var vue = new FakeVue()
   api.same(vue.$formatTime(testDate, "medium"), "14:22:38")
 })
+
+
+
+
+
+
+test("Format Relative Minutes - EN", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "en",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var minutes = 27;
+  var now = new Date();
+  var testDate = now - (1000 * 60 * minutes);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatRelative(testDate, "medium", now), "27 minutes ago")
+})
+
+test("Format Relative Minutes - ES", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "es",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var minutes = 27;
+  var now = new Date();
+  var testDate = now - (1000 * 60 * minutes);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatRelative(testDate, "medium"), "hace 27 minutos")
+})
+
+test("Format Relative Minutes - FR", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "fr",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var minutes = 27;
+  var now = new Date();
+  var testDate = now - (1000 * 60 * minutes);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatRelative(testDate, "medium"), "il y a 27 minutes")
+})
+
+test("Format Relative Minutes - DE", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "de",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var minutes = 27;
+  var now = new Date();
+  var testDate = now - (1000 * 60 * minutes);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatRelative(testDate, "medium"), "vor 27 Minuten")
+})
+
+
+
+
+
+test("Format Relative Dates - EN", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "en",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var minutes = 27;
+  var now = new Date();
+  var testDate = now - (1000 * 60 * 60 * 24 * 2.5);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatRelative(testDate, "medium", now), "2 days ago")
+})
+
+test("Format Relative Dates - ES", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "es",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var minutes = 27;
+  var now = new Date();
+  var testDate = now - (1000 * 60 * 60 * 24 * 2.5);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatRelative(testDate, "medium"), "anteayer")
+})
+
+test("Format Relative Dates - FR", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "fr",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var minutes = 27;
+  var now = new Date();
+  var testDate = now - (1000 * 60 * 60 * 24 * 2.5);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatRelative(testDate, "medium"), "avant-hier")
+})
+
+test("Format Relative Dates - DE", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "de",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var minutes = 27;
+  var now = new Date();
+  var testDate = now - (1000 * 60 * 60 * 24 * 2.5);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatRelative(testDate, "medium"), "vorgestern")
+})
