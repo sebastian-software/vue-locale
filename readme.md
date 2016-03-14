@@ -82,6 +82,7 @@ let messages =
 - HTML Output: ```{{{ "my-html-identifier" | format-message }}}```
 - Personal: Not possible because we can't pass the required additional data structure to the filter
 
+
 ### Translating using function calls
 
 - Plain Text: ```{{ $formatMessage("my-message-identifier") }}```
@@ -91,19 +92,24 @@ let messages =
 
 ### Formatting Numbers
 
-- Number Formatting: ```{{ 3.14159 | format-number }}``` => `"3,14"`
-- Percent Formatting: ```{{ 0.64 | format-percent }}``` => `"64%"`
-- Currency Formatting: ```{{ 21.37 | format-currency }}``` => `"21 €"`
-- Precise Currency Formatting: ```{{ 21.37 | format-currency-precise }}``` => `"21,37 €"`
+- Number Formatting #1: ```{{ 3.14159 | format-number }}``` => `"3,14159"`
+- Number Formatting #2: ```{{ 3.14159 | format-number 2 }}``` => `"3,14"`
+- Number Formatting #3: ```{{ 3.14159 | format-number 0 }}``` => `"3"`
+- Percent Formatting #1: ```{{ 0.641322 | format-percent }}``` => `"64%"`
+- Percent Formatting #2: ```{{ 0.641322 | format-percent 2 }}``` => `"64,13%"`
+- Currency Formatting #1: ```{{ 21.37 | format-currency }}``` => `"21 €"`
+- Currency Formatting #2: ```{{ 21.37 | format-currency-precise }}``` => `"21,37 €"`
 
 
-### Formatting Dates
+### Formatting Dates/Times
 
+- Date Formatting: ```{{ new Date | format-date }}``` => `12.2.2016`
+- Time Formatting: ```{{ new Date | format-time }}``` => `14:23 Uhr`
 
 
 ### Formatting Relative Dates
 
-
+- Relative Formatting: ```{{ new Date - (1000 * 60 * 10) | format-relative }}``` => `vor 10 Minuten`
 
 
 
