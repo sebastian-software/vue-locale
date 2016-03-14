@@ -4,6 +4,7 @@
 .babelrc
 .editorconfig
 .codeclimate.yml
+.eslintcache
 
 gulpfile.babel.js
 node_modules/
