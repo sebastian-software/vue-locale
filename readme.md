@@ -84,9 +84,26 @@ let messages =
 
 ### Translating using function calls
 
-- Plain Text: ```{{ "my-message-identifier" | format-message }}```
-- HTML Output: ```{{{ "my-html-identifier" | format-message }}}```
+- Plain Text: ```{{ $formatMessage("my-message-identifier") }}```
+- HTML Output: ```{{{ $formatMessage("my-html-identifier") }}}```
 - Personal: `{{{ $formatMessage("my-personal-identifier", { name : screenName }) }}}`
+
+
+### Formatting Numbers
+
+- Number Formatting: ```{{ 3.14159 | format-number }}``` => `"3,14"`
+- Percent Formatting: ```{{ 0.64 | format-percent }}``` => `"64%"`
+- Currency Formatting: ```{{ 21.30 | format-currency }}``` => `"31 €"`
+- Precise Currency Formatting: ```{{ 3.14 | format-currency-precise }}``` => `"31,30 €"`
+
+
+### Formatting Dates
+
+
+
+### Formatting Relative Dates
+
+
 
 
 
