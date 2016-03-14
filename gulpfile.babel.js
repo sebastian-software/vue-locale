@@ -7,16 +7,18 @@ import { map } from "lodash"
 
 gulp.task("clean-data", function()
 {
-  return del([ "data/*" ])
+  return del([ "data" ])
 })
 
-gulp.task("build-data", function()
+gulp.task("build-data", ["clean-data"], function()
 {
   let data = extractData(
   {
     pluralRules: true,
     relativeFields: true
   })
+
+  fs.mkdirSync("data")
 
   return Promise.all(map(data, (value, locale) =>
   {
