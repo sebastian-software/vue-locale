@@ -288,3 +288,66 @@ test("Format Currency - DE", (api) => {
   api.same(vue.$formatNumber(7.98, "currency"), "7,98 €")
   api.same(vue.$formatNumber(1234.5, "currency"), "1.234,50 €")
 })
+
+
+
+
+test("Format Date - EN", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "en",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var testDate = new Date(2012, 8, 12);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatDate(testDate), "9/12/2012")
+})
+
+test("Format Date - ES", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "es",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var testDate = new Date(2012, 8, 12);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatDate(testDate), "12/9/2012")
+})
+
+test("Format Date - FR", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "fr",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var testDate = new Date(2012, 8, 12);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatDate(testDate), "12/9/2012")
+})
+
+test("Format Date - DE", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "de",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var testDate = new Date(2012, 8, 12);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatDate(testDate), "12.9.2012")
+})
