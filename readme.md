@@ -93,8 +93,8 @@ let messages =
 
 - Number Formatting: ```{{ 3.14159 | format-number }}``` => `"3,14"`
 - Percent Formatting: ```{{ 0.64 | format-percent }}``` => `"64%"`
-- Currency Formatting: ```{{ 21.30 | format-currency }}``` => `"31 €"`
-- Precise Currency Formatting: ```{{ 3.14 | format-currency-precise }}``` => `"31,30 €"`
+- Currency Formatting: ```{{ 21.37 | format-currency }}``` => `"21 €"`
+- Precise Currency Formatting: ```{{ 21.37 | format-currency-precise }}``` => `"21,37 €"`
 
 
 ### Formatting Dates
