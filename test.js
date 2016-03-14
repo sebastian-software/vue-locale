@@ -292,7 +292,7 @@ test("Format Currency - DE", (api) => {
 
 
 
-test("Format Date - EN", (api) => {
+test("Format Date Medium - EN", (api) => {
   var FakeVue = getFakeVue()
 
   VueLocale.install(FakeVue, {
@@ -304,10 +304,10 @@ test("Format Date - EN", (api) => {
   var testDate = new Date(2012, 8, 12);
 
   var vue = new FakeVue()
-  api.same(vue.$formatDate(testDate), "9/12/2012")
+  api.same(vue.$formatDate(testDate, "medium"), "Sep 12, 2012")
 })
 
-test("Format Date - ES", (api) => {
+test("Format Date Medium - ES", (api) => {
   var FakeVue = getFakeVue()
 
   VueLocale.install(FakeVue, {
@@ -319,10 +319,10 @@ test("Format Date - ES", (api) => {
   var testDate = new Date(2012, 8, 12);
 
   var vue = new FakeVue()
-  api.same(vue.$formatDate(testDate), "12/9/2012")
+  api.same(vue.$formatDate(testDate, "medium"), "12 sept. 2012")
 })
 
-test("Format Date - FR", (api) => {
+test("Format Date Medium - FR", (api) => {
   var FakeVue = getFakeVue()
 
   VueLocale.install(FakeVue, {
@@ -334,10 +334,10 @@ test("Format Date - FR", (api) => {
   var testDate = new Date(2012, 8, 12);
 
   var vue = new FakeVue()
-  api.same(vue.$formatDate(testDate), "12/9/2012")
+  api.same(vue.$formatDate(testDate, "medium"), "12 sept. 2012")
 })
 
-test("Format Date - DE", (api) => {
+test("Format Date Medium - DE", (api) => {
   var FakeVue = getFakeVue()
 
   VueLocale.install(FakeVue, {
@@ -349,5 +349,71 @@ test("Format Date - DE", (api) => {
   var testDate = new Date(2012, 8, 12);
 
   var vue = new FakeVue()
-  api.same(vue.$formatDate(testDate), "12.9.2012")
+  api.same(vue.$formatDate(testDate, "medium"), "12. Sep. 2012")
+})
+
+
+
+
+
+
+test("Format Time Medium - EN", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "en",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var testDate = new Date(2012, 8, 12, 14, 22, 38);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatTime(testDate, "medium"), "2:22:38 PM")
+})
+
+test("Format Time Medium - ES", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "es",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var testDate = new Date(2012, 8, 12, 14, 22, 38);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatTime(testDate, "medium"), "14:22:38")
+})
+
+test("Format Time Medium - FR", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "fr",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var testDate = new Date(2012, 8, 12, 14, 22, 38);
+
+  var vue = new FakeVue()
+  api.same(vue.$formatTime(testDate, "medium"), "14:22:38")
+})
+
+test("Format Time Medium - DE", (api) => {
+  var FakeVue = getFakeVue()
+
+  VueLocale.install(FakeVue, {
+    language: "de",
+    currency: "EUR",
+    messages: {}
+  })
+
+  var testDate = new Date(2012, 8, 12, 14, 22, 38);
+
+
+  var vue = new FakeVue()
+  api.same(vue.$formatTime(testDate, "medium"), "14:22:38")
 })
