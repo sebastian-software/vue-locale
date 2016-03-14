@@ -7,7 +7,7 @@
 
 import IntlMessageFormat from "intl-messageformat"
 import IntlRelativeFormat from "intl-relativeformat"
-import IntlLocalesSupported from "intl-locales-supported"
+import areLocalesSupported from "intl-locales-supported"
 
 import createFormatCache from "intl-format-cache"
 
@@ -18,8 +18,9 @@ import { kebabCase, isPlainObject, isString, isNumber, isDate, each, clamp } fro
 import "intl"
 
 // NodeJS by default to not offer full ICU support and therefor break the unit tests
-if (!IntlLocalesSupported(["en", "de", "fr", "es"]))
+if (!areLocalesSupported([ "en", "de", "fr", "es" ]))
 {
+  /* global IntlPolyfill */
   Intl.NumberFormat = IntlPolyfill.NumberFormat
   Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat
 }
@@ -69,7 +70,7 @@ function install(Vue, options)
     if (isString(format))
     {
       if (format === "currency")
-        format = { style : "currency", currency: currency }
+        format = { style: "currency", currency: currency }
       else if (format in formats.number)
         format = formats.number[format]
     }

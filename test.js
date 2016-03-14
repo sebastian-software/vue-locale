@@ -15,7 +15,10 @@ import VueLocale from "./src/VueLocale"
 import "intl"
 
 /* eslint camelcase: 0 */
+/* eslint no-magic-numbers: 0 */
+
 /* global IntlPolyfill */
+
 // Import three common locales for testing
 import intl_en from "intl/locale-data/json/en.json"
 import intl_de from "intl/locale-data/json/de.json"
@@ -116,12 +119,12 @@ test("Translation Singular", (api) => {
     language: "de-DE",
     currency: "EUR",
     messages: {
-      "hello": "Hallo"
+      "hello-singular": "Hallo"
     }
   })
 
   var vue = new FakeVue()
-  api.same(vue.$formatMessage("hello"), "Hallo")
+  api.same(vue.$formatMessage("hello-singular"), "Hallo")
 })
 
 test("Translation Placeholder", (api) => {
@@ -136,7 +139,7 @@ test("Translation Placeholder", (api) => {
   })
 
   var vue = new FakeVue()
-  api.same(vue.$formatMessage("hello-name", { name : "Frank-Rüdiger" }), "Hallo Frank-Rüdiger!")
+  api.same(vue.$formatMessage("hello-name", { name: "Frank-Rüdiger" }), "Hallo Frank-Rüdiger!")
 })
 
 test("Translation Placeholder with Markup", (api) => {
@@ -151,7 +154,7 @@ test("Translation Placeholder with Markup", (api) => {
   })
 
   var vue = new FakeVue()
-  api.same(vue.$formatMessage("hello-name", { name : "Frank-Rüdiger" }), "Hallo <strong>Frank-Rüdiger</strong>!")
+  api.same(vue.$formatMessage("hello-name", { name: "Frank-Rüdiger" }), "Hallo <strong>Frank-Rüdiger</strong>!")
 })
 
 test("Translation Plural", (api) => {
@@ -226,7 +229,6 @@ test("Format Number - DE", (api) => {
   api.same(vue.$formatNumber(3.14159), "3,142")
   api.same(vue.$formatNumber(10000000), "10.000.000")
 })
-
 
 
 
