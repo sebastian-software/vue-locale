@@ -193,9 +193,11 @@ function install(Vue, options)
     // model -> view: formats the value when updating the input element.
     read: function(val, fractionDigits)
     {
-      return formatNumber(val == null || val === "" ? 0 : clamp(val / 100, 0, 1), {
+      return formatNumber(val == null || val === "" ? 0 : clamp(val / 100, 0, 1),
+      {
         style: "percent",
-        minimumFractionDigits: fractionDigits == null ? 0 : fractionDigits
+        minimumFractionDigits: fractionDigits == null ? 0 : fractionDigits,
+        maximumFractionDigits: fractionDigits == null ? Infinity : fractionDigits
       })
     },
 
