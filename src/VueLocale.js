@@ -32,6 +32,9 @@ const getCachedDateTimeFormat = createFormatCache(Intl.DateTimeFormat)
 const getCachedMessageFormat = createFormatCache(IntlMessageFormat)
 const getCachedRelativeFormat = createFormatCache(IntlRelativeFormat)
 
+// A constant defined by the standard Intl.NumberFormat
+const maximumFractionDigits = 20;
+
 
 function install(Vue, options)
 {
@@ -197,7 +200,7 @@ function install(Vue, options)
       {
         style: "percent",
         minimumFractionDigits: fractionDigits == null ? 0 : fractionDigits,
-        maximumFractionDigits: fractionDigits == null ? Infinity : fractionDigits
+        maximumFractionDigits: fractionDigits == null ? maximumFractionDigits : fractionDigits
       })
     },
 
@@ -215,7 +218,7 @@ function install(Vue, options)
       return val == null || val === "" ? 0 : formatNumber(val,
       {
         minimumFractionDigits: fractionDigits == null ? 0 : fractionDigits,
-        maximumFractionDigits: fractionDigits == null ? Infinity : fractionDigits
+        maximumFractionDigits: fractionDigits == null ? maximumFractionDigits : fractionDigits
       })
     },
 
