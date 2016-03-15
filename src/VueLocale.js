@@ -166,7 +166,7 @@ function install(Vue, options)
         maximumFractionDigits: 0
       }
 
-      return formatNumber(val == null || val === "" ? 0 : val, numberOptions)
+      return formatNumber(val == null || val === "" || isNaN(val) ? 0 : val, numberOptions)
     },
 
     // view -> model: formats the value when writing to the data.
@@ -179,7 +179,7 @@ function install(Vue, options)
   {
     // model -> view: formats the value when updating the input element.
     read: function(val) {
-      return formatNumber(val == null || val === "" ? 0 : val, "currency")
+      return formatNumber(val == null || val === "" || isNaN(val) ? 0 : val, "currency")
     },
 
     // view -> model: formats the value when writing to the data.
