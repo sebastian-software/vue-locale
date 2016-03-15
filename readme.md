@@ -58,6 +58,47 @@ While these are typical examples of values:
 - `MESSAGE_TEXTS`: `{ key : value, ...}`
 
 
+## Loading required locale data
+
+Depending on whether your clients support the `Intl` API + all relevant locales (prominent exceptions right now are NodeJS, Safari on Mac and Safari on iOS) the amount of data and polyfills to load differs.
+
+### Loading Intl-Polyfill + Data for 4 Locales
+
+```js
+import intl_en from "intl/locale-data/json/en.json"
+import intl_de from "intl/locale-data/json/de.json"
+import intl_fr from "intl/locale-data/json/fr.json"
+import intl_es from "intl/locale-data/json/es.json"
+
+IntlPolyfill.__addLocaleData(intl_en)
+IntlPolyfill.__addLocaleData(intl_de)
+IntlPolyfill.__addLocaleData(intl_fr)
+IntlPolyfill.__addLocaleData(intl_es)
+```
+
+The data loaded here contains information on how to format dates (+ calendar data) and numbers (+ currencies).
+
+### Loading FormatJS Data for 4 Locales
+
+Because of an incompatible JSONP-like approach of the data delivered through FormatJS, we have integrated the data in some ES2015/JSPM compatible way in the `vue-locale` project. To load the data to the following:
+
+```js
+import IntlRelativeFormat from "intl-relativeformat"
+
+import relative_en from "./data/en.js"
+import relative_de from "./data/de.js"
+import relative_fr from "./data/fr.js"
+import relative_es from "./data/es.js"
+
+IntlRelativeFormat.__addLocaleData(relative_en)
+IntlRelativeFormat.__addLocaleData(relative_de)
+IntlRelativeFormat.__addLocaleData(relative_fr)
+IntlRelativeFormat.__addLocaleData(relative_es)
+```
+
+The data loaded here contains formatting instructions for relative formats + the required plural function for figuring out the required plural wording for message formatting.
+
+
 ## Usage
 
 ### Adding Messages
