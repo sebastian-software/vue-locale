@@ -52,6 +52,7 @@ function getFakeVue() {
 
   FakeVue.filters = {}
   FakeVue.directives = {}
+  FakeVue.components = {}
 
   FakeVue.filter = function(name, callback) {
     FakeVue.filters[name] = callback
@@ -59,6 +60,10 @@ function getFakeVue() {
 
   FakeVue.directive = function(name, callback) {
     FakeVue.directives[name] = callback
+  }
+
+  FakeVue.component = function(name, config) {
+    FakeVue.components[name] = config
   }
 
   return FakeVue

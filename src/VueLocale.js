@@ -180,6 +180,19 @@ function install(Vue, options)
     this.el.innerHTML = formatMessage(id)
   })
 
+  Vue.component("text",
+  {
+    template: "{{ translated }}",
+    props: {
+      msg: {}
+    },
+    computed: {
+      translated: function(...formatOptions) {
+        return formatMessage(this.msg, ...formatOptions);
+      }
+    }
+  })
+
 
 
 
