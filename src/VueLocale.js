@@ -41,6 +41,10 @@ function install(Vue, options)
   var { language, currency, messages } = options
   var locale = language
 
+
+
+
+
   function formatDate(date, format)
   {
     let parsedDate = new Date(date)
@@ -81,31 +85,6 @@ function install(Vue, options)
     return getCachedNumberFormat(locale, format).format(num)
   }
 
-  // Figuring out whether the separator is either "," or "." (Are there any other possibilities at all?)
-  var decimalTestNumber = 3.1
-  var decimalSeparator = formatNumber(decimalTestNumber).charAt(1)
-
-  function extractNumberParts(value)
-  {
-    var parsed = parseInt(value.replace(/[^0-9]/g, ""), 0)
-    return isNaN(parsed) ? 0 : parsed
-  }
-
-  function parseToNumber(value)
-  {
-    if (value == null || value === "")
-      return 0
-
-    var splits = value.split(decimalSeparator).map(extractNumberParts)
-
-    // Build up float number to let parseFloat convert it back into a number
-    if (splits[1] > 0)
-      return parseFloat(splits[0] + "." + splits[1])
-
-    // Return plain integer
-    return splits[0]
-  }
-
   function formatRelative(date, format, now)
   {
     let parsedDate = new Date(date)
@@ -135,6 +114,43 @@ function install(Vue, options)
 
 
 
+  // =============================================
+  //   PARSERS
+  // =============================================
+
+  // Figuring out whether the separator is either "," or "." (Are there any other possibilities at all?)
+  var decimalTestNumber = 3.1
+  var decimalSeparator = formatNumber(decimalTestNumber).charAt(1)
+
+  function extractNumberParts(value)
+  {
+    var parsed = parseInt(value.replace(/[^0-9]/g, ""), 0)
+    return isNaN(parsed) ? 0 : parsed
+  }
+
+  function parseToNumber(value)
+  {
+    if (value == null || value === "")
+      return 0
+
+    var splits = value.split(decimalSeparator).map(extractNumberParts)
+
+    // Build up float number to let parseFloat convert it back into a number
+    if (splits[1] > 0)
+      return parseFloat(splits[0] + "." + splits[1])
+
+    // Return plain integer
+    return splits[0]
+  }
+
+
+
+
+
+  // =============================================
+  //   REGISTER FILTERS
+  // =============================================
+
   var helpers = { formatDate, formatTime, formatRelative, formatNumber, formatMessage }
 
   each(helpers, function(helper, name)
@@ -154,6 +170,13 @@ function install(Vue, options)
 
     this.el.innerHTML = formatMessage(id)
   })
+
+
+
+
+  // =============================================
+  //   ADDITIONAL FILTERS
+  // =============================================
 
   // Via: http://jsfiddle.net/6jjuoypf/2/
   Vue.filter("format-currency",
