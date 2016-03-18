@@ -43,7 +43,9 @@ function install(Vue, options)
 
 
 
-
+  // =============================================
+  //   FORMATTER FUNCTIONS
+  // =============================================
 
   function formatDate(date, format)
   {
@@ -151,7 +153,14 @@ function install(Vue, options)
   //   REGISTER FILTERS
   // =============================================
 
-  var helpers = { formatDate, formatTime, formatRelative, formatNumber, formatMessage }
+  var helpers =
+  {
+    formatDate,
+    formatTime,
+    formatRelative,
+    formatNumber,
+    formatMessage
+  }
 
   each(helpers, function(helper, name)
   {
