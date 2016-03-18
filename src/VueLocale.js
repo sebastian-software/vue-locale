@@ -182,9 +182,12 @@ function install(Vue, options)
 
   Vue.component("text",
   {
-    template: "{{ translated }}",
+    template: '<span class="text">{{ translated }}</span>',
     props: {
-      msg: {}
+      msg: {
+        type: String,
+        required: true
+      }
     },
     computed: {
       translated: function(...formatOptions) {
