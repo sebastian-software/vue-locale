@@ -3,7 +3,6 @@
 .eslintrc.yml
 .babelrc
 .editorconfig
-.codeclimate.yml
 .eslintcache
 
 gulpfile.babel.js
