@@ -1,12 +1,15 @@
 <img src="assets/vuejs.png" alt="VueJS Logo" width="200" height="200"/>
 
-# VueJS Locale<br/>![Downloads][npm-version-img] ![Downloads][npm-downloads-img] [![Build Status][ci-img]][ci] ![Dependencies][deps-img]
+# VueJS Locale<br/>[![Sponsored by][sponsor-img]][sponsor] [![Downloads][npm-version-img][npm] [![Downloads][npm-downloads-img]][npm] [![Build Status][ci-img]][ci] [![Dependencies][deps-img]][deps]
 
 [VueJS] Plugin for advanced localization of web applications.
 
+[sponsor-img]: https://img.shields.io/badge/Sponsored%20by-Sebastian%20Software-692446.svg
+[sponsor]: https://www.sebastian-software.de
 [VueJS]: https://github.com/vuejs/vue
 [ci-img]:  https://travis-ci.org/sebastian-software/vue-locale.svg
 [ci]:      https://travis-ci.org/sebastian-software/vue-locale
+[deps]: https://david-dm.org/sebastian-software/vue-locale
 [deps-img]: https://david-dm.org/sebastian-software/vue-locale.svg
 [npm]: https://www.npmjs.com/package/vue-locale
 [npm-downloads-img]: https://img.shields.io/npm/dm/vue-locale.svg
