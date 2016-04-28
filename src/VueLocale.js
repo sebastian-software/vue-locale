@@ -33,7 +33,12 @@ const getCachedMessageFormat = createFormatCache(IntlMessageFormat)
 const getCachedRelativeFormat = createFormatCache(IntlRelativeFormat)
 
 // A constant defined by the standard Intl.NumberFormat
-const maximumFractionDigits = 20;
+// const maximumFractionDigits = 20;
+// Unfortunately through formatting issues of percent values in IE
+// we have to use a small value here, because IE (as of v11) seems to
+// account the percent symbol + optional space to the fraction digits.
+// See also: https://github.com/sebastian-software/vue-locale/issues/1#issuecomment-215396481
+const maximumFractionDigits = 18;
 
 
 function install(Vue, options)
