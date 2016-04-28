@@ -1,6 +1,6 @@
 <img src="assets/vuejs.png" alt="VueJS Logo" width="200" height="200"/>
 
-# VueJS Locale<br/>[![Sponsored by][sponsor-img]][sponsor] [![Downloads][npm-version-img][npm] [![Downloads][npm-downloads-img]][npm] [![Build Status][ci-img]][ci] [![Dependencies][deps-img]][deps]
+# VueJS Locale<br/>[![Sponsored by][sponsor-img]][sponsor] [![Version][npm-version-img]][npm] [![Downloads][npm-downloads-img]][npm] [![Build Status][ci-img]][ci] [![Dependencies][deps-img]][deps]
 
 [VueJS] Plugin for advanced localization of web applications.
 
