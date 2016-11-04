@@ -37,7 +37,7 @@
     "formatjs-extract-cldr-data": "^3.0.0",
     "gulp": "^3.9.1",
     "javascript-stringify": "^1.1.0",
-    "s15e-javascript": "^0.2.0",
+    "s15e-javascript": "^0.3.2",
     "updtr": "^0.1.10"
   },
   "scripts": {
