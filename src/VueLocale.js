@@ -49,6 +49,7 @@ function install(Vue, options)
   function changeLocale(language)
   {
     locale = language
+    console.log(locale)
   }
 
   // =============================================
@@ -118,6 +119,8 @@ function install(Vue, options)
     // If there is a single map parameter, use that instead of the formatOptions array
     if (formatOptions.length === 1 && isPlainObject(formatOptions[0]))
       formatOptions = formatOptions[0]
+
+    console.log(locale)
 
     return message.format(formatOptions)
   }
