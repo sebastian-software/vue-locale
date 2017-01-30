@@ -46,7 +46,10 @@ function install(Vue, options)
   var { language, currency, messages } = options
   var locale = language
 
-
+  function changeLocale(language)
+  {
+    locale = language
+  }
 
   // =============================================
   //   FORMATTER FUNCTIONS
