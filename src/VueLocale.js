@@ -48,7 +48,10 @@ function install(Vue, options)
 
   function changeLocale(newLocale, callback)
   {
-    { language, currency, messages } = options
+    language = newLocale.language
+    currency = newLocale.currency
+    messages = newLocale.messages
+    
     locale = language
     
     callback()
