@@ -46,9 +46,12 @@ function install(Vue, options)
   var { language, currency, messages } = options
   var locale = language
 
-  function changeLocale(newLocale)
+  function changeLocale(newLocale, callback)
   {
-    locale = newLocale
+    { language, currency, messages } = options
+    locale = language
+    
+    callback()
   }
 
   // =============================================
@@ -159,8 +162,8 @@ function install(Vue, options)
   //   REGISTER GLOBALS
   // =============================================
 
-  Vue.changeLocale = function (newLocale) {
-    changeLocale(newLocale)
+  Vue.changeLocale = function (newLocale, callback) {
+    changeLocale(newLocale, callback)
   }
 
   
