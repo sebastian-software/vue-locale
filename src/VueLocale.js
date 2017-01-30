@@ -156,7 +156,7 @@ function install(Vue, options)
 
 
   // =============================================
-  //   REGISTER FILTERS
+  //   REGISTER GLOBALS
   // =============================================
 
   Vue.changeLocale = function () {
