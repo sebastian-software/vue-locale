@@ -46,10 +46,12 @@ function install(Vue, options)
   var { language, currency, messages } = options
   var locale = language
 
-  function changeLocale(language)
+  function changeLocale(newLanguage)
   {
-    locale = language
+    console.log(newLanguage)
     console.log(locale)
+
+    locale = newLanguage
   }
 
   // =============================================
@@ -119,8 +121,6 @@ function install(Vue, options)
     // If there is a single map parameter, use that instead of the formatOptions array
     if (formatOptions.length === 1 && isPlainObject(formatOptions[0]))
       formatOptions = formatOptions[0]
-
-    console.log(locale)
 
     return message.format(formatOptions)
   }
